@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { AuthAPI } from '../api/auth';
 import { LoginCredentials, RegisterUserData, User } from '../types/auth';
 
@@ -54,6 +55,12 @@ export const useLogout = () => {
 
 // Hook to get current user
 export const useCurrentUser = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return useQuery({
     queryKey: AUTH_QUERY_KEYS.currentUser,
     queryFn: () => {
@@ -63,7 +70,7 @@ export const useCurrentUser = () => {
       }
       return user;
     },
-    enabled: AuthAPI.isAuthenticated(), // Only run if user is authenticated
+    enabled: isMounted && AuthAPI.isAuthenticated(), // Only run if mounted and user is authenticated
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: false, // Don't retry if user is not authenticated
   });
@@ -71,13 +78,21 @@ export const useCurrentUser = () => {
 
 // Hook to check authentication status
 export const useAuth = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  // Ensure we're on the client side before checking auth
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
   const { data: user, isLoading, error } = useCurrentUser();
-  const isAuthenticated = AuthAPI.isAuthenticated();
+  const isAuthenticated = isMounted ? AuthAPI.isAuthenticated() : false;
 
   return {
     user,
     isAuthenticated,
     isLoading: isAuthenticated && isLoading,
     error,
+    isMounted,
   };
 };

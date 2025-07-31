@@ -2,24 +2,31 @@
 
 import { useAuth, useLogout } from '@/lib/hooks/useAuth';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DashboardPage() {
   const { user, isAuthenticated, isLoading } = useAuth();
   const logoutMutation = useLogout();
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Ensure component is mounted before checking auth to prevent hydration issues
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (isMounted && !isLoading && !isAuthenticated) {
       router.push('/login');
     }
-  }, [isAuthenticated, isLoading, router]);
+  }, [isAuthenticated, isLoading, router, isMounted]);
 
   const handleLogout = () => {
     logoutMutation.mutate();
   };
 
-  if (isLoading) {
+  // Show loading while checking authentication or before mounting
+  if (!isMounted || isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
