@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Balde de Carnada - Frontend
 
-## Getting Started
+A comprehensive business management system built with Next.js, TypeScript, and Tailwind CSS. This frontend application provides a complete interface for managing products, stock, orders, users, attendance, and generating reports.
 
-First, run the development server:
+## 🏗️ Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+frontend/
+├── public/                      # Static assets
+├── src/
+│   ├── api/                     # API clients, organized by domain
+│   │   ├── auth.ts              # Authentication API
+│   │   ├── products.ts          # Product API
+│   │   ├── stock.ts             # Stock API
+│   │   ├── orders.ts            # Orders API
+│   │   ├── users.ts             # Users API
+│   │   ├── attendance.ts        # Attendance API
+│   │   └── reports.ts           # Reports API
+│   │
+│   ├── components/              # Reusable UI components
+│   │   ├── common/              # Generic UI (buttons, inputs, etc.)
+│   │   ├── auth/                # Auth-specific components
+│   │   ├── products/            # Product UI components
+│   │   ├── stock/               # Stock UI components
+│   │   ├── orders/              # Order UI components
+│   │   ├── users/               # User UI components
+│   │   ├── attendance/          # Attendance UI components
+│   │   └── reports/             # Report UI components
+│   │
+│   ├── features/                # Business logic per domain (hooks, etc.)
+│   │   ├── auth/
+│   │   │   └── useAuth.ts       # Custom hook (login, register, logout)
+│   │   ├── products/
+│   │   │   └── useProducts.ts   # Product management hooks
+│   │   ├── stock/               # Stock management hooks
+│   │   ├── orders/              # Order management hooks
+│   │   ├── users/               # User management hooks
+│   │   ├── attendance/          # Attendance hooks
+│   │   └── reports/             # Report generation hooks
+│   │
+│   ├── contexts/                # React Contexts
+│   │   └── AuthContext.tsx      # Authentication context
+│   │
+│   ├── services/                # Common utilities
+│   │   ├── http.ts              # Axios setup with interceptors
+│   │   ├── auth.ts              # Token handling
+│   │   └── errorHandler.ts      # Centralized error processing
+│   │
+│   ├── schemas/                 # Validation schemas (Zod)
+│   │   ├── auth.schema.ts       # Authentication schemas
+│   │   ├── products.schema.ts   # Product schemas
+│   │   ├── stock.schema.ts      # Stock schemas
+│   │   ├── attendance.schema.ts # Attendance schemas
+│   │   └── reports.schema.ts    # Report schemas
+│   │
+│   ├── types/                   # TypeScript type definitions
+│   │   ├── api.d.ts             # API response types
+│   │   ├── product.d.ts         # Product types
+│   │   ├── stock.d.ts           # Stock types
+│   │   ├── user.d.ts            # User types
+│   │   ├── attendance.d.ts      # Attendance types
+│   │   └── reports.d.ts         # Report types
+│   │
+│   ├── utils/                   # Utility functions
+│   │   ├── date.ts              # Date formatting and manipulation
+│   │   ├── filters.ts           # Data filtering helpers
+│   │   └── formatters.ts        # Value formatting (currency, numbers, etc.)
+│   │
+│   └── constants/               # App constants
+│       └── endpoints.ts         # API endpoint definitions
+│
+├── app/                         # Next.js App Router
+│   ├── layout.tsx               # Root layout with providers
+│   ├── page.tsx                 # Homepage
+│   └── ...                      # Additional routes
+│
+├── .env.local                   # Environment variables
+├── package.json
+├── tsconfig.json
+└── README.md
+```
