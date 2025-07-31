@@ -8,7 +8,6 @@ export interface RegisterUserData {
   email: string;
   name: string;
   password: string;
-  role?: string;
 }
 
 export interface User {

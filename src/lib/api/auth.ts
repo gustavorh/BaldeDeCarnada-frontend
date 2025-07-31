@@ -35,6 +35,7 @@ export class AuthAPI {
 
   static async register(userData: RegisterUserData): Promise<User> {
     try {
+      // Send only email, name, and password - backend handles default role assignment
       const response = await apiClient.post<User>(
         this.AUTH_ENDPOINTS.REGISTER,
         userData
