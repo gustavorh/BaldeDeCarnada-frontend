@@ -11,14 +11,17 @@ import {
 
 export class AuthApi {
   async login(loginData: LoginDto): Promise<AuthResponse> {
-    const response = await httpService.post<ApiResponseDto<AuthResponse>>(
+    const response = await httpService.post<ApiResponseDto<User>>(
       API_ENDPOINTS.AUTH.LOGIN,
       loginData
     );
     
     if (response.success && response.data) {
-      authService.saveAuthResponse(response.data);
-      return response.data;
+      // Since your backend only returns user data, we create an AuthResponse
+      return {
+        user: response.data,
+        // No tokens provided by backend
+      };
     }
     
     throw new Error(response.error || 'Login failed');

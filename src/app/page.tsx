@@ -3,6 +3,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { Card } from '@/components/common/Card';
 import { Button } from '@/components/common/Button';
+import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
@@ -49,72 +50,10 @@ export default function Home() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Welcome back, {user?.name}!
-            </h1>
-            <p className="mt-2 text-gray-600">
-              Here&apos;s an overview of your business operations
-            </p>
-          </div>
+  // If authenticated, redirect to dashboard
+  if (typeof window !== 'undefined') {
+    window.location.href = '/dashboard';
+  }
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <Card title="Quick Actions" className="lg:col-span-2">
-              <div className="grid grid-cols-2 gap-4">
-                <Button 
-                  className="h-20 flex-col"
-                  onClick={() => window.location.href = '/products'}
-                >
-                  <span className="text-lg">📦</span>
-                  Manage Products
-                </Button>
-                <Button 
-                  className="h-20 flex-col"
-                  onClick={() => window.location.href = '/stock'}
-                >
-                  <span className="text-lg">📊</span>
-                  Stock Control
-                </Button>
-                <Button 
-                  className="h-20 flex-col"
-                  onClick={() => window.location.href = '/orders'}
-                >
-                  <span className="text-lg">🛒</span>
-                  View Orders
-                </Button>
-                <Button 
-                  className="h-20 flex-col"
-                  onClick={() => window.location.href = '/reports'}
-                >
-                  <span className="text-lg">📈</span>
-                  Reports
-                </Button>
-              </div>
-            </Card>
-
-            <Card title="System Status">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Products</span>
-                  <span className="text-sm font-medium">Loading...</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Low Stock Items</span>
-                  <span className="text-sm font-medium">Loading...</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Pending Orders</span>
-                  <span className="text-sm font-medium">Loading...</span>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return <LoadingSpinner />;
 }

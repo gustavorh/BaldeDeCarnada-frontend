@@ -28,6 +28,11 @@ export interface LoginDto {
 
 export interface AuthResponse {
   user: User;
-  accessToken: string;
+  accessToken?: string;  // Optional since your backend doesn't provide tokens
   refreshToken?: string;
+}
+
+// For backends that only return user data without tokens
+export interface SimpleAuthResponse {
+  user: User;
 }

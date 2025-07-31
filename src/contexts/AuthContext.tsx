@@ -1,14 +1,14 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User } from '@/types/user.d';
+import { User, AuthResponse } from '@/types/user.d';
 import { authService } from '@/services/auth';
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (user: User, token: string, refreshToken?: string) => void;
+  login: (user: User, token?: string, refreshToken?: string) => void;
   logout: () => void;
   updateUser: (user: User) => void;
 }
@@ -24,6 +24,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const savedUser = authService.getUser();
     const isAuthenticated = authService.isAuthenticated();
     
+    console.log('AuthContext initialization - savedUser:', savedUser, 'isAuthenticated:', isAuthenticated);
+    
     if (isAuthenticated && savedUser) {
       setUser(savedUser);
     }
@@ -31,13 +33,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  const login = (user: User, token: string, refreshToken?: string) => {
-    authService.setToken(token);
-    if (refreshToken) {
-      authService.setRefreshToken(refreshToken);
+  const login = (user: User, token?: string, refreshToken?: string) => {
+    console.log('AuthContext login called with:', { user, token, refreshToken });
+    
+    if (!user) {
+      console.error('Login called without user data:', { user });
+      return;
     }
-    authService.setUser(user);
+    
+    const authResponse: AuthResponse = {
+      user,
+      accessToken: token,
+      refreshToken
+    };
+    authService.saveAuthResponse(authResponse);
     setUser(user);
+    console.log('Login completed, user state set to:', user);
   };
 
   const logout = () => {
@@ -52,7 +63,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const value: AuthContextType = {
     user,
-    isAuthenticated: !!user,
+    isAuthenticated: authService.isAuthenticated(),
     isLoading,
     login,
     logout,
