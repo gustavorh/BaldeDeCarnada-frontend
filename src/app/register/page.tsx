@@ -11,6 +11,7 @@ export default function RegisterPage() {
     email: '',
     name: '',
     password: '',
+    role: 'user', // Default role
   });
   const [errors, setErrors] = useState<Partial<RegisterUserData>>({});
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -135,6 +136,23 @@ export default function RegisterPage() {
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email}</p>
               )}
+            </div>
+
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+                Role
+              </label>
+              <select
+                id="role"
+                name="role"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                value={formData.role}
+                onChange={handleInputChange('role')}
+              >
+                <option value="user">User</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
 
             <div>

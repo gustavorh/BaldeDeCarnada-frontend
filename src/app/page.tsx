@@ -2,29 +2,23 @@
 
 import { useAuth } from '@/lib/hooks/useAuth';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Home() {
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Ensure component is mounted before checking auth to prevent hydration issues
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
-    if (isMounted && !isLoading) {
+    if (!isLoading) {
       if (isAuthenticated) {
         router.push('/dashboard');
       } else {
         router.push('/login');
       }
     }
-  }, [isAuthenticated, isLoading, router, isMounted]);
+  }, [isAuthenticated, isLoading, router]);
 
-  // Show loading while checking authentication or before mounting
+    // Show loading while checking authentication
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
