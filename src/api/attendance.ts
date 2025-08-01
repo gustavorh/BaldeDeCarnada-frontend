@@ -1,7 +1,7 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
-import { Attendance, RegisterAttendanceDto } from '@/types/attendance.d';
+import { ApiResponseDto } from '@/types/api';
+import { Attendance, RegisterAttendanceDto } from '@/types/attendance';
 
 export class AttendanceApi {
   async registerAttendance(attendanceData: RegisterAttendanceDto): Promise<Attendance> {

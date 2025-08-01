@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { authApi } from '@/api/auth';
 import { useAuth } from '@/contexts/AuthContext';
-import { LoginDto, RegisterUserDto } from '@/types/user.d';
+import { LoginDto, RegisterUserDto } from '@/types/user';
 
 export function useAuthActions() {
   const [isLoading, setIsLoading] = useState(false);

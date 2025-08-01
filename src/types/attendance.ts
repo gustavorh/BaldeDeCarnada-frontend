@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface Attendance {
   id: string;
   userId: string;

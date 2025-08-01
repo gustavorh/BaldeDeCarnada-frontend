@@ -1,12 +1,12 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
+import { ApiResponseDto } from '@/types/api';
 import { 
   Stock, 
   UpdateStockDto, 
   IncreaseStockDto, 
   DecreaseStockDto 
-} from '@/types/stock.d';
+} from '@/types/stock';
 
 export class StockApi {
   async getAllStock(): Promise<Stock[]> {

@@ -7,7 +7,7 @@ import {
   StockReport, 
   AttendanceReportData, 
   GenerateReportDto 
-} from '@/types/reports.d';
+} from '@/types/reports';
 
 export function useReports() {
   const [isLoading, setIsLoading] = useState(false);

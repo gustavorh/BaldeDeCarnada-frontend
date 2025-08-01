@@ -1,12 +1,12 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
+import { ApiResponseDto } from '@/types/api';
 import { 
   SalesReport, 
   StockReport, 
   AttendanceReportData, 
   GenerateReportDto 
-} from '@/types/reports.d';
+} from '@/types/reports';
 
 export class ReportsApi {
   async generateSalesReport(reportData: GenerateReportDto): Promise<SalesReport> {

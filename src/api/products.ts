@@ -1,12 +1,12 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
+import { ApiResponseDto } from '@/types/api';
 import { 
   Product, 
   CreateProductDto, 
   UpdateProductDto,
   ProductSearchParams 
-} from '@/types/product.d';
+} from '@/types/product';
 
 export class ProductsApi {
   async getAllProducts(params?: ProductSearchParams): Promise<Product[]> {

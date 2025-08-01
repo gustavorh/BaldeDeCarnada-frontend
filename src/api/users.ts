@@ -1,7 +1,7 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
-import { User, RegisterUserDto } from '@/types/user.d';
+import { ApiResponseDto } from '@/types/api';
+import { User, RegisterUserDto } from '@/types/user';
 
 export class UsersApi {
   async getAllUsers(): Promise<User[]> {

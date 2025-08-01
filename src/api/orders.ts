@@ -1,7 +1,7 @@
 import { httpService } from '@/services/http';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
-import { Order, CreateOrderDto } from '@/types/order.d';
+import { ApiResponseDto } from '@/types/api';
+import { Order, CreateOrderDto } from '@/types/order';
 
 export class OrdersApi {
   async getAllOrders(): Promise<Order[]> {

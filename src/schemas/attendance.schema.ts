@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { AttendanceType } from '@/types/attendance.d';
+import { AttendanceType } from '@/types/attendance';
 
 export const registerAttendanceSchema = z.object({
   userId: z.string().min(1, 'User ID is required'),

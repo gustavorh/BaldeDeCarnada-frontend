@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { attendanceApi } from '@/api/attendance';
-import { Attendance, RegisterAttendanceDto } from '@/types/attendance.d';
+import { Attendance, RegisterAttendanceDto } from '@/types/attendance';
 
 export function useAttendance() {
   const [attendance, setAttendance] = useState<Attendance[]>([]);

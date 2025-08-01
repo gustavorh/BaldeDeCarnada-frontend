@@ -1,7 +1,7 @@
-import { Product } from '@/types/product.d';
-import { Stock } from '@/types/stock.d';
-import { Order } from '@/types/order.d';
-import { User } from '@/types/user.d';
+import { Product } from '@/types/product';
+import { Stock } from '@/types/stock';
+import { Order } from '@/types/order';
+import { User } from '@/types/user';
 
 /**
  * Filter products by various criteria

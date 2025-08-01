@@ -8,7 +8,7 @@ import { Card } from '@/components/common/Card';
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
-import { UserRole } from '@/types/user.d';
+import { UserRole } from '@/types/user';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { stockApi } from '@/api/stock';
-import { Stock, UpdateStockDto, IncreaseStockDto, DecreaseStockDto } from '@/types/stock.d';
+import { Stock, UpdateStockDto, IncreaseStockDto, DecreaseStockDto } from '@/types/stock';
 
 export function useStock() {
   const [stock, setStock] = useState<Stock[]>([]);

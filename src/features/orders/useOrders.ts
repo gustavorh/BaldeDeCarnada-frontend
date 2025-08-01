@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ordersApi } from '@/api/orders';
-import { Order, CreateOrderDto } from '@/types/order.d';
+import { Order, CreateOrderDto } from '@/types/order';
 
 export function useOrders() {
   const [orders, setOrders] = useState<Order[]>([]);

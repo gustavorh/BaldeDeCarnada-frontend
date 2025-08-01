@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { usersApi } from '@/api/users';
-import { User, RegisterUserDto } from '@/types/user.d';
+import { User, RegisterUserDto } from '@/types/user';
 
 export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);

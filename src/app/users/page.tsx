@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { usersApi } from '@/api/users';
-import { User, UserRole, RegisterUserDto } from '@/types/user.d';
+import { User, UserRole, RegisterUserDto } from '@/types/user';
 import { Card } from '@/components/common/Card';
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';

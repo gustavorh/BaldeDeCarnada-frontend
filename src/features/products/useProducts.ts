@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { productsApi } from '@/api/products';
-import { Product, CreateProductDto, UpdateProductDto, ProductSearchParams } from '@/types/product.d';
+import { Product, CreateProductDto, UpdateProductDto, ProductSearchParams } from '@/types/product';
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);

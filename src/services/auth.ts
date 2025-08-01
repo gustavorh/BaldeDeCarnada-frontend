@@ -1,4 +1,4 @@
-import { AuthResponse, User } from '@/types/user.d';
+import { AuthResponse, User } from '@/types/user';
 
 class AuthService {
   private readonly TOKEN_KEY = 'accessToken';

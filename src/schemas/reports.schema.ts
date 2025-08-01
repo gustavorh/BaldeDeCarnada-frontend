@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ReportType } from '@/types/reports.d';
+import { ReportType } from '@/types/reports';
 
 export const generateReportSchema = z.object({
   startDate: z.string().min(1, 'Start date is required'),

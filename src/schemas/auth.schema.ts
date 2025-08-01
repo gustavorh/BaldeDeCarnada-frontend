@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { UserRole } from '@/types/user.d';
+import { UserRole } from '@/types/user';
 
 export const loginSchema = z.object({
   email: z.string().email('Invalid email format'),

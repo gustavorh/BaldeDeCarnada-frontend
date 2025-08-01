@@ -1,13 +1,13 @@
 import { httpService } from '@/services/http';
 import { authService } from '@/services/auth';
 import { API_ENDPOINTS } from '@/constants/endpoints';
-import { ApiResponseDto } from '@/types/api.d';
+import { ApiResponseDto } from '@/types/api';
 import { 
   AuthResponse, 
   LoginDto, 
   RegisterUserDto,
   User 
-} from '@/types/user.d';
+} from '@/types/user';
 
 export class AuthApi {
   async login(loginData: LoginDto): Promise<AuthResponse> {

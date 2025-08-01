@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { reportsApi } from '@/api/reports';
-import { SalesReport, StockReport, AttendanceReportData, ReportType } from '@/types/reports.d';
+import { SalesReport, StockReport, AttendanceReportData, ReportType } from '@/types/reports';
 import { Card } from '@/components/common/Card';
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';

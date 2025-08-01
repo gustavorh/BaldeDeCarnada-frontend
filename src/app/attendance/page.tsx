@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { attendanceApi } from '@/api/attendance';
-import { Attendance, AttendanceType } from '@/types/attendance.d';
+import { Attendance, AttendanceType } from '@/types/attendance';
 import { Card } from '@/components/common/Card';
 import { Button } from '@/components/common/Button';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';

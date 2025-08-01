@@ -1,4 +1,4 @@
-import { ErrorResponseDto } from '@/types/api.d';
+import { ErrorResponseDto } from '@/types/api';
 
 export class ApiError extends Error {
   public statusCode: number;
